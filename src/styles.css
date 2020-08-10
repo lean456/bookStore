@@ -43,3 +43,17 @@
   
   
   
+
+@font-face{
+  font-family: RobotoCustom;
+  src: url(fonts/Roboto-Regular.ttf);
+}
+div {
+  font-family: 'RobotoCustom','Times New Roman', Times, serif;
+}
+body {
+  font-family: 'RobotoCustom';
+}
+section{
+  font-family: 'RobotoCustom';
+}
