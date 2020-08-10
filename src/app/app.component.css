@@ -1,0 +1,12 @@
+
+
+@font-face{
+    font-family: RobotoCustom;
+    src: url(../fonts/Roboto-Medium.ttf);
+}
+div {
+    font-family: 'RobotoCustom','Times New Roman', Times, serif;
+}
+body {
+    font-family: 'RobotoCustom';
+}
