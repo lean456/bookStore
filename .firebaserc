@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "programacion3-5d577": {
+      "hosting": {
+        "firebase": [
+          "programacion3-5d577"
+        ]
+      }
+    }
+  }
+}

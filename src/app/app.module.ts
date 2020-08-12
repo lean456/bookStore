@@ -15,6 +15,10 @@ import { RegisterComponent } from './components/users/register/register.componen
 import { Page404Component } from './components/users/page404/page404.component';
 import {FormsModule} from '@angular/forms'
 import { APP_ROUTING } from '../app.routes';
+import { environment } from '../environments/environment';
+
+import {AngularFireModule} from '@angular/fire';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +38,9 @@ import { APP_ROUTING } from '../app.routes';
   imports: [
     BrowserModule,
     APP_ROUTING,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
