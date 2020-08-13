@@ -18,6 +18,7 @@ import { APP_ROUTING } from '../app.routes';
 import { environment } from '../environments/environment';
 
 import {AngularFireModule} from '@angular/fire';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @NgModule({
@@ -41,8 +42,9 @@ import {AngularFireModule} from '@angular/fire';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     
+    
   ],
-  providers: [],
+  providers: [AngularFireAuth],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

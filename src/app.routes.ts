@@ -12,7 +12,7 @@ import { Page404Component } from './app/components/users/page404/page404.compone
 
  const routes: Routes = [
      {path:'',component: HomeComponent },
-     {path: 'home',component: HomeComponent },
+     
      {path:'offers', component: OffersComponent},
      {path: 'book/:id', component:DetailsBooksComponent},
      {path: 'admin/list-books', component: ListBooksComponent},

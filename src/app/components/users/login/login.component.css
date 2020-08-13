@@ -5,8 +5,8 @@
 
   .btn-social{
     position: relative;
-    padding-left: 44px;
-    text-align: left;
+    
+    text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -16,4 +16,9 @@
   }
   .btn-google{
     background: #dd4b39;
+
+  }
+  .btn-github{
+    background: #24292E;
+
   }
