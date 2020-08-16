@@ -11,13 +11,13 @@ import { ProfileComponent } from './app/components/users/profile/profile.compone
 import { Page404Component } from './app/components/users/page404/page404.component';
 
  const routes: Routes = [
-     {path:'',component: HomeComponent },
-     
+     {path:'home',component: HomeComponent },
      {path:'offers', component: OffersComponent},
      {path: 'book/:id', component:DetailsBooksComponent},
      {path: 'admin/list-books', component: ListBooksComponent},
      {path: 'user/login', component: LoginComponent},
      {path: 'user/register', component: RegisterComponent},
+     {path: '', redirectTo: 'home', pathMatch: 'full'},
      {path: 'user/profile', component: ProfileComponent},
      {path: '**', component: Page404Component}
     ]

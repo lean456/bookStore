@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { map } from 'rxjs/operators'
 import { auth } from 'firebase/app';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,13 +15,27 @@ export class AuthService {
 
   }
 
-  loginEmailUser(){}
+  loginEmailUser(email: string, password:string){
 
-  loginFacebookUser(){}
-  loginGoogleUser(){}
+    return new Promise((resolve, reject) => {
+      this.auth.signInWithEmailAndPassword(email, password)
+          .then(userData => resolve(userData),
+          err => reject(err));
+    })
+
+  }
+
+  loginGitHubUser(){
+    return this.auth.signInWithPopup(new auth.GithubAuthProvider());
+    
+  }
+  loginGoogleUser(){
+    return this.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    
+  }
 
   logoutUser(){
-    
+    return this.auth.signOut();
   }
 
   isAuth(){

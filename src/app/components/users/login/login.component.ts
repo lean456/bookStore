@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -10,24 +12,54 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public auth: AngularFireAuth,private router: Router) {
+  constructor(private authService: AuthService,private router: Router) {
   }
+
+  public email: string = '';
+  public password: string = '';
+
+
+
+
+
+
+
+
   onLoginGoogle() {
-    this.auth.signInWithPopup(new auth.GoogleAuthProvider());
-    this.router.navigate(['admin/list-books'])
+    this.authService.loginGoogleUser().then((res) => {
+      console.log('respuesta usuario', res);
+      this.onLoginRedirect();
+
+    }).catch(err => console.error('ERROR',err.message))
   }
 
   onLoginGithub(){
-    
-    this.auth.signInWithPopup(new auth.GithubAuthProvider());
-    //this.router.navigate(['admin/list-books'])
+    this.authService.loginGitHubUser().then((res) => {
+      console.log('respuesta usuario', res);
+      this.onLoginRedirect();
+
+    }).catch(err => console.error('ERROR',err.message))
   }
+   
+  onLoginEmail(){
+    this.authService.loginEmailUser(this.email,this.password)
+        .then((res) => {
+          this.onLoginRedirect();
+        }).catch(err => console.error('ERROR', err.message))
+  }
+  
 
   logout() {
-    this.auth.signOut();
+    this.authService.logoutUser();
   }
 
   ngOnInit(): void {
+  }
+
+
+
+  onLoginRedirect(){
+    this.router.navigate(['admin/list-books'])
   }
 
 }
