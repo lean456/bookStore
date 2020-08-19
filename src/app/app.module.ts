@@ -19,6 +19,7 @@ import { environment } from '../environments/environment';
 
 import {AngularFireModule} from '@angular/fire';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage'
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
     APP_ROUTING,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
     
     
   ],

@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
 
 
-
+//Metodo de logeo por google, utuliza el service auth.service, y redirecciona a list-book
   onLoginGoogle() {
     this.authService.loginGoogleUser().then((res) => {
       console.log('respuesta usuario', res);
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
     }).catch(err => console.error('ERROR',err.message))
   }
-
+//Metodo de logeo por github, utuliza el service auth.service, y redirecciona a list-book
   onLoginGithub(){
     this.authService.loginGitHubUser().then((res) => {
       console.log('respuesta usuario', res);
@@ -41,6 +41,9 @@ export class LoginComponent implements OnInit {
     }).catch(err => console.error('ERROR',err.message))
   }
    
+
+
+  //Metodo de logeo por correo (CREE USUARIO POR FIREBASE), utuliza el service auth.service, y redirecciona a list-book
   onLoginEmail(){
     this.authService.loginEmailUser(this.email,this.password)
         .then((res) => {
