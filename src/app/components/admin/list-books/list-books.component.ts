@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { DataApiService } from '../../../services/data-api.service';
+import { BookInterface } from '../../../models/book';
+import {NgForm} from '@angular/forms'
 @Component({
   selector: 'app-list-books',
   templateUrl: './list-books.component.html',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListBooksComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataApi: DataApiService) { }
+  private books: BookInterface = {}
 
   ngOnInit(): void {
+    this.getListBooks();
   }
 
+  getListBooks(){
+    this.dataApi.getAllBooks().subscribe(data => {
+      this.books = data;
+    })
+  }
 }

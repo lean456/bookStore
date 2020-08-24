@@ -16,6 +16,8 @@ export class DataApiService {
 
 private booksCollection: AngularFirestoreCollection<BookInterface>;
 private books: Observable<BookInterface[]>;
+private bookDoc: AngularFirestoreDocument<BookInterface>;
+private book: Observable<BookInterface>;
 
 
 
@@ -30,16 +32,32 @@ getAllBooks() {
   } ))
 }
 
-addBook() {
-
+getOneBook(idBook: string){
+  this.bookDoc = this.afs.doc<BookInterface>(`books/${idBook}`);
+  return this.book = this.bookDoc.snapshotChanges().pipe(map(action => {
+    if (action.payload.exists === false) {
+      return null
+    } else {
+      const data = action.payload.data() as BookInterface;
+      data.id = action.payload.id;
+      return data
+    }
+  }));
 }
 
-updateBook() {
-
+addBook(book:BookInterface) {
+  this.booksCollection.add(book);
 }
 
-deleteBook(){
+updateBook(book: BookInterface) {
+  let idBook = book.id;
+  this.bookDoc = this.afs.doc<BookInterface>(`books/${idBook}`);
+  this.bookDoc.update(book);
+}
 
+deleteBook(idBook:string):void{
+  this.bookDoc = this.afs.doc<BookInterface>(`books/${idBook}`)
+  this.bookDoc.delete();
 }
 
 

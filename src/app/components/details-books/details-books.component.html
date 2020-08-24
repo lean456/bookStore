@@ -1,1 +1,21 @@
-<p>details-books works!</p>
+
+<section id="book" class="mt-5">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
+            <div class="card_book">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <p>
+                            <img class="img-fluid" src="{{book.portrait}}" alt="{{book.tittle}}">
+                        </p>
+                        <h4 class="card-title">{{book.tittle}}</h4>
+                        <p class="card-text">
+                            {{book.description}}
+                        </p>
+                        <a href="{{book.link_amazon}}" class="btn btn-block btn-primary">Buy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
