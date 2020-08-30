@@ -10,7 +10,7 @@ import {NgForm} from '@angular/forms'
 export class ListBooksComponent implements OnInit {
 
   constructor(private dataApi: DataApiService) { }
-  private books: BookInterface = {}
+   books: BookInterface[];
 
   ngOnInit(): void {
     this.getListBooks();
@@ -19,6 +19,18 @@ export class ListBooksComponent implements OnInit {
   getListBooks(){
     this.dataApi.getAllBooks().subscribe(data => {
       this.books = data;
+     console.log(data);
     })
   }
+
+  onDeleteBook(idBook:string){
+    const confirmacion = confirm('Are you sure?')
+    if(confirmacion) {
+
+      this.dataApi.deleteBook(idBook)
+    }
+  }
+
+ 
+  
 }

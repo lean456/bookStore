@@ -1,1 +1,67 @@
-<p>modal works!</p>
+<div class="modal fade" id="modalBook" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New book</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="formBook" #formBook="ngForm" (ngSubmit)="onSaveBook(formBook)">
+                    <input type="text" name="bookId">
+                    <div class="form-group">
+                        <label for="tittle" class="col-form-label">Title:</label>
+                        <input type="text" class="form-control" name="tittle" [(ngModel)]="this.dataApi.selectedBook.tittle">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="language">Language</label>
+                            <select name="language" class="form-control" [(ngModel)]="this.dataApi.selectedBook.language">
+                                <option value="English">English</option>
+                                <option value="Spanish">Spanish</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="price">Price</label>
+                            <input type="text" name="price" class="form-control" placeholder="$0,00" [(ngModel)]="this.dataApi.selectedBook.price">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="author">Author</label>
+                            <input type="text" name="author" class="form-control" placeholder="Author" [(ngModel)]="this.dataApi.selectedBook.author">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="offer">Offer</label>
+                            <select name="offer" class="form-control" [(ngModel)]="this.dataApi.selectedBook.offer">
+                                <option value=false>No</option>
+                                <option value=true>Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="portrait">Portrait</label>
+                            <input type="text" name="portrait" class="form-control" placeholder="Portrait" [(ngModel)]="this.dataApi.selectedBook.portrait">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="link_amazon">Link Amazon</label>
+                            <input type="text" name="link_ama<on" class="form-control" placeholder="Link Amazon" [(ngModel)]="this.dataApi.selectedBook.link_amazon">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" name="description" [(ngModel)]="this.dataApi.selectedBook.description"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" (click)="onSaveBook(formBook)">Save book</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,37 @@
-<p>list-books works!</p>
-<p>list-books works!</p>
-<p>list-books works!</p>
-<p>list-books works!</p>
-{{books|json}}
+<section class="row mt-5">
+    <div class="col">
+        <button class="btn btn-outline-warning mb-3 btn-lg float-right " data-toggle="modal" data-target="#modalBook">New Book</button>
+        <table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Language</th>
+      <th scope="col">Price</th>
+      <th scope="col">Offer</th>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books; index as i">
+      <th scope="row">{{i+1}}</th>
+      <td>{{book.tittle}}</td>
+      <td>{{book.author}}</td>
+      <td>{{book.language}}</td>
+      <td>{{book.price}}</td>
+      <td>{{book.offer}}</td>
+      <td><button type="button" class="btn btn-primary">Update</button>
+      </td>
+      <td>
+        <td><button type="button" class="btn btn-danger" (click)="onDeleteBook(book.id)">Delete</button>
+      </td>
+    </tr>
+   
+  </tbody>
+</table>
+    </div>
+</section>
+<app-modal></app-modal>

@@ -18,7 +18,7 @@ private booksCollection: AngularFirestoreCollection<BookInterface>;
 private books: Observable<BookInterface[]>;
 private bookDoc: AngularFirestoreDocument<BookInterface>;
 private book: Observable<BookInterface>;
-
+public selectedBook: BookInterface = {};
 
 
 
@@ -45,7 +45,8 @@ getOneBook(idBook: string){
   }));
 }
 
-addBook(book:BookInterface) {
+addBook(book:BookInterface):void {
+  
   this.booksCollection.add(book);
 }
 
@@ -59,7 +60,5 @@ deleteBook(idBook:string):void{
   this.bookDoc = this.afs.doc<BookInterface>(`books/${idBook}`)
   this.bookDoc.delete();
 }
-
-
 
 }
