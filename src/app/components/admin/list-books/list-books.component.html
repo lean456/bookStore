@@ -1,10 +1,12 @@
 <section class="row mt-5">
     <div class="col">
-        <button class="btn btn-outline-warning mb-3 btn-lg float-right " data-toggle="modal" data-target="#modalBook">New Book</button>
+        <button class="btn btn-outline-warning mb-3 btn-lg float-right " data-toggle="modal" data-target="#modalBook">
+          <i class="fa fa-book mr-1"></i>New Book</button>
+         
         <table class="table">
   <thead class="thead-light">
     <tr>
-      <th scope="col">#</th>
+      <th scope="col"><i class="fa fa-table"></i></th>
       <th scope="col">Title</th>
       <th scope="col">Author</th>
       <th scope="col">Language</th>
@@ -22,16 +24,30 @@
       <td>{{book.author}}</td>
       <td>{{book.language}}</td>
       <td>{{book.price}}</td>
-      <td>{{book.offer}}</td>
-      <td><button type="button" class="btn btn-primary">Update</button>
+      <td>{{book.offer ==1 ? 'Yes' : 'No'}}</td>
+      <td *ngIf=" book.userUid == userUid || isAdmin == true; else noOwner"><button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#modalBook" (click)="onPreUpdateBook(book)">
+        <i class="fa fa-retweet "></i>
+        </button>
       </td>
-      <td>
-        <td><button type="button" class="btn btn-danger" (click)="onDeleteBook(book.id)">Delete</button>
+      <ng-template #noOwner>
+        <td>
+          <button type="button" class="btn btn-secondary"   disabled="true">
+            <i class="fa fa-retweet "></i>
+            </button>
+        </td>
+      </ng-template>
+      <td *ngIf="isAdmin == true; else noAdmin">
+        <button type="button" class="btn btn-danger" (click)="onDeleteBook(book.id)"><i class="fa fa-trash mr-0"></i></button>
       </td>
+      <ng-template #noAdmin>
+        <td>
+          <button type="button" class="btn btn-danger" disabled="true"><i class="fa fa-trash mr-0"></i></button>
+        </td>
+      </ng-template>
     </tr>
    
   </tbody>
 </table>
     </div>
 </section>
-<app-modal></app-modal>
+<app-modal [userUid]="userUid"></app-modal>

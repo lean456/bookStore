@@ -6,6 +6,7 @@ export interface BookInterface {
     price?: string;
     link_amazon?: string;
     author?: string;
-    offer?: boolean;
+    offer?: string;
     id?: string;
+    userUid?: string;
 }

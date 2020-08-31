@@ -15,8 +15,9 @@ export class ProfileComponent implements OnInit {
   user: UserInterface = {
     name: '',
     email: '',
-    photoUrl: ''
-  }
+    photoUrl: '',
+    roles:{}
+  };
 public providerId: string = 'null';
   ngOnInit(): void {
     this.auth.isAuth().subscribe(user => {

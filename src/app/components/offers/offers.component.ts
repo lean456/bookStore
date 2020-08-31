@@ -10,26 +10,17 @@ DataApiService
   styleUrls: ['./offers.component.css']
 })
 export class OffersComponent implements OnInit {
-books:BookInterface[];
+
   constructor(private dataApi: DataApiService) { }
-
-  ngOnInit(): void {
-    this.getListBooks();
+  public books: BookInterface[];
+  ngOnInit() {
+    this.getOffers();
+    console.log('OFERTAS', this.books);
   }
 
 
-
-  getListBooks(){
-    this.dataApi.getAllBooks().subscribe(data => {
-      this.books = data;
-     console.log(data);
-    })
+  getOffers() {
+    this.dataApi.getAllBooksOffers().subscribe(offers => this.books = offers);
   }
 
-  // checkOffer(){
-  //  let ofers:BookInterface[] = this.getListBooks();
-  //   for(let i = 0; i<ofers.length;i++){
-  //     if()
-  //   }
-  // }
 }
